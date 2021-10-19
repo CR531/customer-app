@@ -1,0 +1,24 @@
+type Vehicle {
+	id: ID!,
+	type: String,
+	modelCode: String,
+	brandName: String,
+	launchDate: String
+}
+
+type Customer {
+	customer_id: String!,
+	first_name: String,
+	last_name: String,
+	email_id: String,
+	phone_number: Float,
+	creation_date: String
+}
+
+type Query {
+	customers(count: Int):[Customer]
+}
+
+type Mutation {
+	createCustomer(customer_id: String!, first_name: String!, last_name: String!, email_id: String, phone_number: Float, creation_date: String):Customer
+}
