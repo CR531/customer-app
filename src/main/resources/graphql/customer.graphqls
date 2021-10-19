@@ -7,11 +7,35 @@ type Customer {
 	creation_date: String
 }
 
+type CustomerObj {
+	customer_id: String!,
+	first_name: String,
+	last_name: String,
+	email_id: String,
+	phone_number: Float,
+	creation_date: String
+	addressDetails: [Address]
+}
+
+type Address {
+    address_id: String
+    address1: String
+    address2: String
+    city: String
+    state: String
+    postal_code: String
+    last_update_date: String
+}
+
+type CustomerCreated {
+    customer_id: String
+}
+
 type Query {
-	customers(count: Int):[Customer]
-	customerbyId(customer_id: String):Customer
+	customers(count: Int):[CustomerObj]
+	customerbyId(customer_id: String):CustomerObj
 }
 
 type Mutation {
-	createCustomer(customer_id: String!, first_name: String!, last_name: String!, email_id: String, phone_number: Float, creation_date: String):Customer
+	createCustomer(customer_id: String!, first_name: String!, last_name: String!, email_id: String, phone_number: Float, creation_date: String):CustomerCreated
 }

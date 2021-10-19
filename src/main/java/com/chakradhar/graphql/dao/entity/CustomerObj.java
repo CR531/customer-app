@@ -2,37 +2,26 @@ package com.chakradhar.graphql.dao.entity;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.io.Serializable;
-
-@Entity
 @Data
 @EqualsAndHashCode
-public class Customer implements Serializable {
-
-    @Id
-    @Column(name = "customer_id", nullable = false)
+public class CustomerObj {
     private String customer_id;
 
-    @Column(name = "first_name")
     private String first_name;
 
-    @Column(name = "last_name")
     private String last_name;
 
-    @Column(name = "email_id")
     private String email_id;
 
-    @Column(name = "phone_number")
     private long phone_number;
 
-    @Column(name = "creation_date")
     private String creation_date;
 
-    public Customer() {
+    private List<Address> addressDetails;
+
+    public CustomerObj() {
 
     }
 
@@ -84,4 +73,21 @@ public class Customer implements Serializable {
         this.creation_date = creation_date;
     }
 
+    public List<Address> getAddressDetails() {
+        return addressDetails;
+    }
+
+    public void setAddressDetails(List<Address> addressDetails) {
+        this.addressDetails = addressDetails;
+    }
+
+    public CustomerObj(String customer_id, String first_name, String last_name, String email_id, long phone_number, String creation_date, List<Address> addressDetails) {
+        this.customer_id = customer_id;
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.email_id = email_id;
+        this.phone_number = phone_number;
+        this.creation_date = creation_date;
+        this.addressDetails = addressDetails;
+    }
 }
