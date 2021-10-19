@@ -18,4 +18,7 @@ public class CustomerQuery implements GraphQLQueryResolver {
         return this.customerService.getAllCustomers(count);
     }
 
+    public Customer customerbyId(final String customer_id) {
+        return this.customerService.getCustomerbyId(customer_id);
+    }
 }

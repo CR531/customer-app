@@ -3,6 +3,8 @@ package com.chakradhar.graphql.service;
 import com.chakradhar.graphql.dao.entity.Customer;
 import com.chakradhar.graphql.dao.repository.CustomerRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.IncorrectResultSizeDataAccessException;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -39,6 +41,11 @@ public class CustomerService {
         return this.customerRepository.findAll().stream().limit(count).collect(Collectors.toList());
     }
 
+    @Transactional(readOnly = true)
+    public Customer getCustomerbyId(final String id) {
+        //TODO: need to add persistant logic to get customer by ID
+        return null;
+    }
     /**
      * If postgres db is connected
      */
@@ -65,5 +72,17 @@ public class CustomerService {
     public List<Customer> getAllCustomers(final int count) {
         return jdbcTemplate.query("SELECT * from customers LIMIT ?", BeanPropertyRowMapper.newInstance(Customer.class), count);
     }
-     */
+
+
+    @Transactional(readOnly = true)
+    public Customer getCustomerbyId(final String id) {
+        try {
+            Customer customer = jdbcTemplate.queryForObject("SELECT * FROM Customers WHERE customer_id=?",
+                    BeanPropertyRowMapper.newInstance(Customer.class), id);
+            return customer;
+        } catch (IncorrectResultSizeDataAccessException e) {
+            return null;
+        }
+    }
+    */
 }

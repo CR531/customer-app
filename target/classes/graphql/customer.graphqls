@@ -1,11 +1,3 @@
-type Vehicle {
-	id: ID!,
-	type: String,
-	modelCode: String,
-	brandName: String,
-	launchDate: String
-}
-
 type Customer {
 	customer_id: String!,
 	first_name: String,
@@ -17,6 +9,7 @@ type Customer {
 
 type Query {
 	customers(count: Int):[Customer]
+	customerbyId(customer_id: String):Customer
 }
 
 type Mutation {
