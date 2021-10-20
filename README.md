@@ -12,6 +12,7 @@ Perform "mvn clean install" and Run the application.
 After running the application successfully please navigate to "http://localhost:8080/graphiql" to create or read the data
 
 # Testing using graphql
+**To create a customer**
 mutation {
   createCustomer(customer_id:"9",first_name: "chakri", last_name: "reddy", email_id: "c",phone_number:9090909091, creation_date: "2016-08-12") {
     customer_id
