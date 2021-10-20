@@ -17,6 +17,7 @@ mutation {
     customer_id
   }
 }
+
 **RESPONSE**:
 {
   "data": {
